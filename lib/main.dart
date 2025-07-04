@@ -68,8 +68,8 @@ class FullImageGridScreen extends StatelessWidget {
   final List<Map<String, String>> listItems = List.generate(
     10,
     (index) => {
-      "title": "List Item $index",
-      "subtitle": "This is the detail for item $index.",
+      "title": "รายการที่ $index",
+      "subtitle": "ละเอียดของรายการ $index",
     },
   );
 
@@ -89,13 +89,29 @@ class FullImageGridScreen extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'Grid Section',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal.shade800,
-              ),
+            child: Row(
+              children: [
+                Text(
+                  'รูปภาพทั้งหมด',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal.shade800,
+                  ),
+                ),
+                Spacer(),
+                TextButton(
+                  onPressed: () {
+                  },
+                  child: Text(
+                    'แสดงทั้งหมด',
+                    style: TextStyle(
+                      color: Colors.teal.shade600,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
@@ -154,15 +170,32 @@ class FullImageGridScreen extends StatelessWidget {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'List Section',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal.shade800,
-              ),
+            child: Row(
+              children: [
+                Text(
+                  'รายการทั้งหมด',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal.shade800,
+                  ),
+                ),
+                Spacer(),
+                TextButton(
+                  onPressed: () {
+                  },
+                  child: Text(
+                    'แสดงทั้งหมด',
+                    style: TextStyle(
+                      color: Colors.teal.shade600,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+
           Expanded(
             child: Container(
               decoration: BoxDecoration(
