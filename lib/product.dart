@@ -66,14 +66,18 @@ class ProductPage extends StatelessWidget {
       'image': 'assets/images/10.jpg',
     },
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('สินค้าทั้งหมด'),
+        title: const Text(
+          'สินค้าทั้งหมด',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 26, 170, 141),
+        backgroundColor: const Color.fromARGB(255, 32, 129, 109),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [
@@ -125,8 +129,11 @@ class ProductPage extends StatelessWidget {
               onPressed: () {
                 Get.offAllNamed('/');
               },
-              icon: const Icon(Icons.home),
-              label: const Text('Back to Home'),
+              icon: const Icon(Icons.home, color: Colors.white),
+              label: const Text(
+                'กลับหน้าแรก',
+                style: TextStyle(color: Colors.white),
+              ),
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(48),
                 backgroundColor: const Color.fromARGB(255, 26, 170, 141),
@@ -148,9 +155,13 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product['name'] ?? 'รายละเอียดสินค้า'),
+        title: Text(
+          product['name'] ?? 'รายละเอียดสินค้า',
+          style: const TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 26, 170, 141),
+        backgroundColor: const Color.fromARGB(255, 32, 129, 109),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -189,10 +200,13 @@ class ProductDetailPage extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: const Icon(Icons.arrow_back),
-              label: const Text('Back to Products'),
+              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              label: const Text(
+                'กลับหน้าสินค้าทั้งหมด',
+                style: TextStyle(color: Colors.white),
+              ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 26, 170, 141),
+                backgroundColor: const Color.fromARGB(255, 32, 129, 109),
                 minimumSize: const Size.fromHeight(48),
               ),
             ),

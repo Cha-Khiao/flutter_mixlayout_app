@@ -39,11 +39,6 @@ class _FullImageGridScreenState extends State<FullImageGridScreen> {
     {'image': 'assets/images/03.jpg', 'label': '3'},
     {'image': 'assets/images/04.jpg', 'label': '4'},
     {'image': 'assets/images/05.jpg', 'label': '5'},
-    {'image': 'assets/images/06.jpg', 'label': '6'},
-    {'image': 'assets/images/07.jpg', 'label': '7'},
-    {'image': 'assets/images/08.jpg', 'label': '8'},
-    {'image': 'assets/images/09.jpg', 'label': '9'},
-    {'image': 'assets/images/10.jpg', 'label': '10'},
   ];
 
   final List<Map<String, String>> listItems = [
@@ -55,10 +50,12 @@ class _FullImageGridScreenState extends State<FullImageGridScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Flutter App"),
+        title: const Text("My Flutter App",
+        style: TextStyle(color: Colors.white)),
         centerTitle: true,
         elevation: 8,
-        backgroundColor: const Color.fromARGB(255, 81, 237, 216),
+        backgroundColor: const Color.fromARGB(255, 75, 110, 205),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: const MyAppDrawer(),
       body: Column(
