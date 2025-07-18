@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:listview_app/components/drawer.dart';
+import 'gallery.dart';
+import 'product.dart';
 
 void main() {
-  runApp(MyFullImageGridApp());
+  runApp(const MyFullImageGridApp());
 }
 
 class MyFullImageGridApp extends StatelessWidget {
@@ -9,81 +13,54 @@ class MyFullImageGridApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'My Flutter App',
       theme: ThemeData(
         primarySwatch: Colors.teal,
-        scaffoldBackgroundColor: Colors.grey.shade100,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
-      home: FullImageGridScreen(),
+      home: const FullImageGridScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class FullImageGridScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> gridItems = [
-    {
-      'image': 'assets/images/01.jpg',
-      'label': '1',
-    },
-    {
-      'image': 'assets/images/02.jpg',
-      'label': '2',
-    },
-    {
-      'image': 'assets/images/03.jpg',
-      'label': '3',
-    },
-    {
-      'image': 'assets/images/04.jpg',
-      'label': '4',
-    },
-    {
-      'image': 'assets/images/05.jpg',
-      'label': '5',
-    },
-    {
-      'image': 'assets/images/06.jpg',
-      'label': '6',
-    },
-    {
-      'image': 'assets/images/07.jpg',
-      'label': '7',
-    },
-    {
-      'image': 'assets/images/08.jpg',
-      'label': '8',
-    },
-    {
-      'image': 'assets/images/09.jpg',
-      'label': '9',
-    },
-    {
-      'image': 'assets/images/10.jpg',
-      'label': '10',
-    },
+class FullImageGridScreen extends StatefulWidget {
+  const FullImageGridScreen({super.key});
+
+  @override
+  State<FullImageGridScreen> createState() => _FullImageGridScreenState();
+}
+
+class _FullImageGridScreenState extends State<FullImageGridScreen> {
+  final List<Map<String, dynamic>> gridItems = const [
+    {'image': 'assets/images/01.jpg', 'label': '1'},
+    {'image': 'assets/images/02.jpg', 'label': '2'},
+    {'image': 'assets/images/03.jpg', 'label': '3'},
+    {'image': 'assets/images/04.jpg', 'label': '4'},
+    {'image': 'assets/images/05.jpg', 'label': '5'},
+    {'image': 'assets/images/06.jpg', 'label': '6'},
+    {'image': 'assets/images/07.jpg', 'label': '7'},
+    {'image': 'assets/images/08.jpg', 'label': '8'},
+    {'image': 'assets/images/09.jpg', 'label': '9'},
+    {'image': 'assets/images/10.jpg', 'label': '10'},
   ];
 
-  final List<Map<String, String>> listItems = List.generate(
-    10,
-    (index) => {
-      "title": "รายการที่ $index",
-      "subtitle": "ละเอียดของรายการ $index",
-    },
-  );
-
-  FullImageGridScreen({super.key});
+  final List<Map<String, String>> listItems = [
+    for (var i = 0; i < 10; i++)
+      {"title": "รายการที่ $i", "subtitle": "ละเอียดของรายการ $i"}
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Flutter App"),
+        title: const Text("My Flutter App"),
         centerTitle: true,
         elevation: 8,
-        backgroundColor: Colors.teal.shade700,
+        backgroundColor: const Color.fromARGB(255, 81, 237, 216),
       ),
+      drawer: const MyAppDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -92,16 +69,17 @@ class FullImageGridScreen extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'รูปภาพทั้งหมด',
+                  'รายการรูปภาพ',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.teal.shade800,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 TextButton(
                   onPressed: () {
+                    Get.to(() => const GalleryPage());
                   },
                   child: Text(
                     'แสดงทั้งหมด',
@@ -114,9 +92,10 @@ class FullImageGridScreen extends StatelessWidget {
               ],
             ),
           ),
+
           Container(
             height: 270,
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GridView.count(
               crossAxisCount: 3,
               mainAxisSpacing: 16,
@@ -135,8 +114,8 @@ class FullImageGridScreen extends StatelessWidget {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           width: double.infinity,
-                          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Colors.transparent, Colors.black54],
                               begin: Alignment.topCenter,
@@ -145,7 +124,7 @@ class FullImageGridScreen extends StatelessWidget {
                           ),
                           child: Text(
                             item['label'],
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
@@ -173,16 +152,17 @@ class FullImageGridScreen extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'รายการทั้งหมด',
+                  'รายการสินค้า',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.teal.shade800,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 TextButton(
                   onPressed: () {
+                    Get.to(() => const ProductPage());
                   },
                   child: Text(
                     'แสดงทั้งหมด',
@@ -200,12 +180,12 @@ class FullImageGridScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.grey.shade50,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: ListView.separated(
                 itemCount: listItems.length,
-                separatorBuilder: (_, __) => SizedBox(height: 10),
+                separatorBuilder: (_, __) => const SizedBox(height: 10),
                 itemBuilder: (context, index) {
                   final item = listItems[index];
                   return Card(
@@ -214,20 +194,20 @@ class FullImageGridScreen extends StatelessWidget {
                     ),
                     elevation: 4,
                     child: ListTile(
-                      contentPadding: EdgeInsets.all(12),
+                      contentPadding: const EdgeInsets.all(12),
                       leading: CircleAvatar(
                         backgroundColor: Colors.teal.shade300,
-                        child: Icon(
+                        child: const Icon(
                           Icons.list,
                           color: Colors.white,
                         ),
                       ),
                       title: Text(
                         item['title']!,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(item['subtitle']!),
-                      trailing: Icon(Icons.arrow_forward_ios_rounded, size: 16),
+                      trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
                       onTap: () {},
                     ),
                   );
